@@ -203,6 +203,36 @@ console.log("# of rooms: ", hotelCondoriCosas.numOfRoomsAvailable());
     hotelExito.makeReservationByDate("Martes", 20) // "Ohh.. unfortunately we can't complete your reservation."
     hotalExito.makeReservationByDate("Jueves", 1); // "Your room have been reserved. See you on Jueves. Your total is: $95"
 
-
-
 */
+/*   LUNES:      $100      35  habitaciones
+    MARTES:     $90       25  habitaciones 
+    MIERCOLES:  $80       12  habitaciones
+    JUEVES:     $95       65  habitaciones
+    VIERNES:    $120      92  habitaciones
+    SABADO:     $150      100 habitaciones
+    DOMINGO:    $135      96  habitaciones */
+
+console.log("<!--------- Challenge 3 -------->");
+const ElHostalDeGoku = function(name = 'El Hostal De Goku', finalRooms = 0, ratesMap) {
+  this.name = name;
+  this.rooms = finalRooms;
+  ratesMap = {
+    lunes: {day: 'Lunes', price: 100, rooms: 35},
+    martes: {day: 'Martes', price: 90, rooms: 25},
+    miercoles: {day: 'Miercoles', price: 80, rooms: 12},
+    jueves: {day: 'Jueves', price: 95, rooms: 65},
+    viernes: {day: 'Viernes', price: 120, rooms: 92},
+    sabado: {day: 'Sabado', price: 150, rooms: 100},
+    domingo: {day: 'Domingo', price: 135, rooms: 96}
+  }
+}
+
+const laTorreDelMaestroKarin = new ElHostalDeGoku('La Torre del Maestro Karin', 100, function() {
+  this.makeReservationByDate = function(finalRooms, day) {
+    finalRooms = finalRooms;
+    rooms = day
+  }
+});
+
+
+console.log(laTorreDelMaestroKarin.name);
