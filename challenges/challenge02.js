@@ -216,23 +216,60 @@ console.log("<!--------- Challenge 3 -------->");
 const ElHostalDeGoku = function(name = 'El Hostal De Goku', finalRooms = 0, ratesMap) {
   this.name = name;
   this.rooms = finalRooms;
-  ratesMap = {
-    lunes: {day: 'Lunes', price: 100, rooms: 35},
-    martes: {day: 'Martes', price: 90, rooms: 25},
-    miercoles: {day: 'Miercoles', price: 80, rooms: 12},
-    jueves: {day: 'Jueves', price: 95, rooms: 65},
-    viernes: {day: 'Viernes', price: 120, rooms: 92},
-    sabado: {day: 'Sabado', price: 150, rooms: 100},
-    domingo: {day: 'Domingo', price: 135, rooms: 96}
+  this.ratesMap = [
+    {day: 'Lunes', price: 100, rooms: 35},
+    {day: 'Martes', price: 90, rooms: 25},
+    {day: 'Miercoles', price: 80, rooms: 12},
+    {day: 'Jueves', price: 95, rooms: 65},
+    {day: 'Viernes', price: 120, rooms: 92},
+    {day: 'Sabado', price: 150, rooms: 100},
+    {day: 'Domingo', price: 135, rooms: 96}
+  ],
+  this.makeReservationByDate = function() {
+    this.ratesMap.forEach((roomsavailable, weekday) => {
+      if (roomsavailable.rooms == roomsavailable && roomsavailable.rooms == 1 && weekday.day == day) {
+        return `Your room have been reserved. See you on ${weekday.day}. Your total is: ${roomsavailable.rooms}`;
+      } else if (roomsavailable.rooms == roomsavailable && roomsavailable.rooms <= 1 && weekday.day == day) {
+        return `Your rooms have been reserved. You reserved ${weekday.day} rooms. See you on <dia que haya reservado>. Your total is: $${roomsavailable.rooms}`;
+      } else {
+        return "Ohh.. unfortunately we can't complete your reservation.";
+      }
+    })
   }
 }
 
-const laTorreDelMaestroKarin = new ElHostalDeGoku('La Torre del Maestro Karin', 100, function() {
-  this.makeReservationByDate = function(finalRooms, day) {
-    finalRooms = finalRooms;
-    rooms = day
-  }
-});
-
+const laTorreDelMaestroKarin = new ElHostalDeGoku('La Torre del Maestro Karin', 100, 'lunes');
 
 console.log(laTorreDelMaestroKarin.name);
+console.log(laTorreDelMaestroKarin.rooms);
+console.log(laTorreDelMaestroKarin.makeReservationByDate("Lunes", 1));
+
+
+
+// var persons = [
+//   {
+//     name: "shubham",
+//     age: 22,
+//     comments: ["Good", "Awesome"]
+//   },
+//   {
+//     name: "Ankit",
+//     age: 24,
+//     comments: ["Fine", "Decent"]
+//   },
+//   {
+//     name: "Arvind",
+//     age: 26,
+//     comments: ["Awesome", "Handsome"]
+//   },
+//   {
+//     name: "Ashwani",
+//     age: 28,
+//     comments: ["Very Good", "Lovely"]
+//   }
+// ];
+// var data = persons.map(person => {
+//   console.log(person.name);
+//   console.log(person.age);
+//   person.comments.map((comment, index) => console.log(index + " " + comment));
+// });
