@@ -225,24 +225,27 @@ const ElHostalDeGoku = function(name = 'El Hostal De Goku', finalRooms = 0, rate
     {day: 'Sabado', price: 150, rooms: 100},
     {day: 'Domingo', price: 135, rooms: 96}
   ],
-  this.makeReservationByDate = function() {
-    this.ratesMap.forEach((roomsavailable, weekday) => {
-      if (roomsavailable.rooms == roomsavailable && roomsavailable.rooms == 1 && weekday.day == day) {
-        return `Your room have been reserved. See you on ${weekday.day}. Your total is: ${roomsavailable.rooms}`;
-      } else if (roomsavailable.rooms == roomsavailable && roomsavailable.rooms <= 1 && weekday.day == day) {
-        return `Your rooms have been reserved. You reserved ${weekday.day} rooms. See you on <dia que haya reservado>. Your total is: $${roomsavailable.rooms}`;
+  this.makeReservationByDate = function(weekday, roomsavailable) {
+    for (let i = 0; i < this.ratesMap.length; i++) {
+      if (this.ratesMap[i].rooms == roomsavailable && this.ratesMap[i].rooms == 1 && this.ratesMap[i].day == weekday) {
+      return `Your room have been reserved. See you on ${weekday}. Your total is: ${roomsavailable}`;
+      } else if (this.ratesMap[i].rooms == roomsavailable && this.ratesMap[i].rooms > 1 && this.ratesMap[i].day == weekday) {
+        return `Your rooms have been reserved. You reserved ${this.ratesMap.day} rooms. See you on <dia que haya reservado>. Your total is: $${this.ratesMap.rooms}}`;
       } else {
-        return "Ohh.. unfortunately we can't complete your reservation.";
+        return "Ohh.. unfortunately we can't complete your reservation, keep trying.";
       }
-    })
+    }
   }
 }
 
+
 const laTorreDelMaestroKarin = new ElHostalDeGoku('La Torre del Maestro Karin', 100, 'lunes');
 
+
+console.log("this is", laTorreDelMaestroKarin.ratesMap[2].day);
 console.log(laTorreDelMaestroKarin.name);
 console.log(laTorreDelMaestroKarin.rooms);
-console.log(laTorreDelMaestroKarin.makeReservationByDate("Lunes", 1));
+console.log(laTorreDelMaestroKarin.makeReservationByDate('Lunes', 1));
 
 
 
